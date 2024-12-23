@@ -1,4 +1,4 @@
-package br.com.rocketseat.gestao_vagas.modules.candidate.controllers;
+package br.com.rocketseat.gestao_vagas.modules.candidate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
