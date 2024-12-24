@@ -19,9 +19,7 @@ public class CreateJobUseCase {
 
         this.companyRepository
                 .findById ( jobEntity.getCompanyId ( ) )
-                .ifPresent ( user -> {
-                    throw new CompanyNotFoundException ( );
-                } );
+                .orElseThrow ( CompanyNotFoundException::new );
 
         return this.jobRepository.save ( jobEntity );
     }
