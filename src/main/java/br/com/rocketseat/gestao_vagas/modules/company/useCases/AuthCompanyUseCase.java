@@ -1,6 +1,7 @@
 package br.com.rocketseat.gestao_vagas.modules.company.useCases;
 
 import br.com.rocketseat.gestao_vagas.modules.company.dto.AuthCompanyDTO;
+import br.com.rocketseat.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.rocketseat.gestao_vagas.modules.company.repositories.CompanyRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.naming.AuthenticationException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 @Service
 public class AuthCompanyUseCase {
@@ -23,7 +25,7 @@ public class AuthCompanyUseCase {
     @Value ( "${security.token.secret}" )
     private String secretKey;
 
-    public String execute ( AuthCompanyDTO authCompanyDTO ) throws AuthenticationException {
+    public AuthCompanyResponseDTO execute ( AuthCompanyDTO authCompanyDTO ) throws AuthenticationException {
         var company = this.companyRepository.findByUsername ( authCompanyDTO.getUsername ( ) ).orElseThrow ( ( ) -> new UsernameNotFoundException ( "Username/password incorrect" ) );
         var passwordMatches = this.passwordEncoder.matches ( authCompanyDTO.getPassword ( ) , company.getPassword ( ) );
         if ( ! passwordMatches ) {
@@ -31,8 +33,16 @@ public class AuthCompanyUseCase {
         }
 
         Algorithm algorithm = Algorithm.HMAC256 ( secretKey );
-        return JWT.create ( ).withIssuer ( "javagas" )
-                .withExpiresAt ( Instant.now ( ).plus ( Duration.ofHours ( 2 ) ) )
-                .withSubject ( company.getId ( ).toString ( ) ).sign ( algorithm );
+        var expiresIn = Instant.now ( ).plus ( Duration.ofMinutes ( 10 ) );
+        var token = JWT.create ( ).withIssuer ( "javagas" )
+                .withExpiresAt ( expiresIn )
+                .withSubject ( company.getId ( ).toString ( ) )
+                .withClaim ( "roles" , List.of ( "COMPANY" ) )
+                .sign ( algorithm );
+
+        return AuthCompanyResponseDTO.builder ( )
+                .access_token ( token )
+                .expires_in ( expiresIn.toEpochMilli ( ) )
+                .build ( );
     }
 }
