@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.security.sasl.AuthenticationException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -39,7 +40,7 @@ public class AuthCandidateUseCase {
         var token = JWT.create ( )
                 .withIssuer ( "javagas" )
                 .withSubject ( candidate.getId ( ).toString ( ) )
-                .withClaim ( "roles" , List.of ( "candidate" ) )
+                .withClaim ( "roles" , List.of ( "CANDIDATE" ) )
                 .withExpiresAt ( expiresIn )
                 .sign ( algorithm );
         return AuthCandidateResponseDTO.builder ( )
