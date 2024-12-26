@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface JobRepository extends JpaRepository<JobEntity, UUID> {
 
-    List<JobEntity> findByDescriptionContaining ( String title );
+    List<JobEntity> findByDescriptionContainingIgnoreCase ( String title );
 }
