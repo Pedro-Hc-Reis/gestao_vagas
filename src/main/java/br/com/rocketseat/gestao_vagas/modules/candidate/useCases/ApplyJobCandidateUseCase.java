@@ -3,6 +3,7 @@ package br.com.rocketseat.gestao_vagas.modules.candidate.useCases;
 import br.com.rocketseat.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.rocketseat.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.rocketseat.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.rocketseat.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.rocketseat.gestao_vagas.modules.company.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class ApplyJobCandidateUseCase {
     private CandidateRepository candidateRepository;
     @Autowired
     private JobRepository jobRepository;
+    @Autowired
+    private ApplyJobRepository applyJobRepository;
 
     // ID do candidato
     // ID da vaga
