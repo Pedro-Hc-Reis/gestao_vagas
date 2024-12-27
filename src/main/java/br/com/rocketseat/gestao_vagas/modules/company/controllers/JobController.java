@@ -53,7 +53,7 @@ public class JobController {
             var result = createJobUseCase.execute ( jobEntity );
             return ResponseEntity.ok ( ).body ( result );
         } catch (Exception e) {
-            return ResponseEntity.badRequest ( ).body ( e );
+            return ResponseEntity.badRequest ( ).body ( e.getMessage ( ) );
         }
     }
 }
