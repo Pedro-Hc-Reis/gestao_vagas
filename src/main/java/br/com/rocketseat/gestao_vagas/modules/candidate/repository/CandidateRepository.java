@@ -1,5 +1,6 @@
-package br.com.rocketseat.gestao_vagas.modules.candidate;
+package br.com.rocketseat.gestao_vagas.modules.candidate.repository;
 
+import br.com.rocketseat.gestao_vagas.modules.candidate.entity.CandidateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

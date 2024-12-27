@@ -1,6 +1,6 @@
 package br.com.rocketseat.gestao_vagas.modules.candidate.controllers;
 
-import br.com.rocketseat.gestao_vagas.modules.candidate.CandidateEntity;
+import br.com.rocketseat.gestao_vagas.modules.candidate.entity.CandidateEntity;
 import br.com.rocketseat.gestao_vagas.modules.candidate.dto.ProfileCandidateResponseDTO;
 import br.com.rocketseat.gestao_vagas.modules.candidate.useCases.ApplyJobCandidateUseCase;
 import br.com.rocketseat.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;

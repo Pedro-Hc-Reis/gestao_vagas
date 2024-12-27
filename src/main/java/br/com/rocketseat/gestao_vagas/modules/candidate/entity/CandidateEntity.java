@@ -1,4 +1,4 @@
-package br.com.rocketseat.gestao_vagas.modules.candidate;
+package br.com.rocketseat.gestao_vagas.modules.candidate.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;

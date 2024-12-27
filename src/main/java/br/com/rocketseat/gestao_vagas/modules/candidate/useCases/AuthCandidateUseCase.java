@@ -1,6 +1,6 @@
 package br.com.rocketseat.gestao_vagas.modules.candidate.useCases;
 
-import br.com.rocketseat.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.rocketseat.gestao_vagas.modules.candidate.repository.CandidateRepository;
 import br.com.rocketseat.gestao_vagas.modules.candidate.dto.AuthCandidateRequestDTO;
 import br.com.rocketseat.gestao_vagas.modules.candidate.dto.AuthCandidateResponseDTO;
 import com.auth0.jwt.JWT;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.security.sasl.AuthenticationException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
 
 @Service

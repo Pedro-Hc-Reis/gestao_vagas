@@ -1,6 +1,5 @@
 package br.com.rocketseat.gestao_vagas.modules.candidate.entity;
 
-import br.com.rocketseat.gestao_vagas.modules.candidate.CandidateEntity;
 import br.com.rocketseat.gestao_vagas.modules.company.entities.JobEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

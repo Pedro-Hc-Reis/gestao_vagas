@@ -2,7 +2,7 @@ package br.com.rocketseat.gestao_vagas.modules.candidate.useCases;
 
 import br.com.rocketseat.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.rocketseat.gestao_vagas.exceptions.UserNotFoundException;
-import br.com.rocketseat.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.rocketseat.gestao_vagas.modules.candidate.repository.CandidateRepository;
 import br.com.rocketseat.gestao_vagas.modules.candidate.entity.ApplyJobEntity;
 import br.com.rocketseat.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.rocketseat.gestao_vagas.modules.company.repositories.JobRepository;
