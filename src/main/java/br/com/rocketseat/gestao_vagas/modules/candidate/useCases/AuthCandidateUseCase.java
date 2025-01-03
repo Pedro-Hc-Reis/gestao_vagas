@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.security.sasl.AuthenticationException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -34,17 +35,21 @@ public class AuthCandidateUseCase {
         if ( ! passwordMatches ) {
             throw new AuthenticationException ( );
         }
+
+        var roles = List.of ( "CANDIDATE" );
+
         Algorithm algorithm = Algorithm.HMAC256 ( secretKey );
         var expiresIn = Instant.now ( ).plus ( Duration.ofMinutes ( 10 ) );
         var token = JWT.create ( )
                 .withIssuer ( "javagas" )
                 .withSubject ( candidate.getId ( ).toString ( ) )
-                .withClaim ( "roles" , List.of ( "CANDIDATE" ) )
+                .withClaim ( "roles" , roles )
                 .withExpiresAt ( expiresIn )
                 .sign ( algorithm );
         return AuthCandidateResponseDTO.builder ( )
                 .access_token ( token )
                 .expires_in ( expiresIn.toEpochMilli ( ) )
+                .roles ( roles )
                 .build ( );
     }
 }
